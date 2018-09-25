@@ -21,4 +21,5 @@ Refresh time every 10 seconds!
 * FLASH SIZE: 32Mbit-C1
 * BAUD: 115200
 
-![]()
+## Result:
+![](https://github.com/imliubo/makingfunxyz-esp8266/blob/master/makingfunxyz-esp8266-NONOS/1.SNTP/sntp.png)
