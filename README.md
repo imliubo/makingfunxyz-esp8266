@@ -7,6 +7,8 @@
 
 ## makingfunxyz-esp8266-RTOS example
 
+- [x] [ESP8266-RTOS-hello world](https://github.com/imliubo/makingfunxyz-esp8266/tree/master/makingfunxyz-esp8266-RTOS/1.hello_world)
+
 好久没有关注ESP8266，最近看到ESP8266的SDK进行了一次大升级，正在逐步往ESP32的风格靠近，最重要的是ESP-IDF也将会支持ESP8266的开发，可以预见的是将来ESP8266和ESP32的开发将会更加便利。
 
 ## ESP8266 SDK v3.0 更新说明
