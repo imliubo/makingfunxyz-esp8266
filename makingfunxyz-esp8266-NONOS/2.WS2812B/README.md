@@ -56,3 +56,5 @@ WS2812B|<---->|NODEMCU
 Data IN|<---->| D3(GPIO0)
 
 ## Result:
+
+will up vedio on youku!

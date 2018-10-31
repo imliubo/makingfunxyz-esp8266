@@ -45,4 +45,4 @@ positive electrode|<---->| D6(GPIO12)
 
 ## Result:
 
-![img](https://github.com/imliubo/makingfunxyz-esp8266/tree/master/makingfunxyz-esp8266-NONOS/4.WebControlLED/img.jpg)
+![img](https://github.com/imliubo/makingfunxyz-esp8266/blob/master/makingfunxyz-esp8266-NONOS/4.WebControlLED/img.jpg)
