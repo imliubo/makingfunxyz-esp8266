@@ -1,4 +1,4 @@
-# WS2812B example
+# PWM control LED example
 
 Refresh time every 10 seconds!
 
@@ -53,8 +53,8 @@ SPI_SIZE_MAP?=6
 * BAUD: 115200
 
 ## Hardware connection:
-WS2812B|<---->|NODEMCU
+LED|<---->|NODEMCU
 -|-|-
-Data IN|<---->| D3(GPIO0)
+positive electrode|<---->| D6(GPIO12)
 
 ## Result:
