@@ -1,7 +1,5 @@
 # WS2812B example
 
-Refresh time every 10 seconds!
-
 ## Hardware:
 * NODEMCU
 * WS2812B
