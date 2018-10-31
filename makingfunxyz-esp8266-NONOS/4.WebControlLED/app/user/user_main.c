@@ -115,10 +115,8 @@ user_set_softap_config(void){
 	IP4_ADDR(&info.netmask, 255, 255, 255, 0);
 	wifi_set_ip_info(SOFTAP_IF, &info);
 
-	IP4_ADDR(&dhcp_lease.start_ip, 192, 168, 4, 100); //分配的网段ip开始
-	IP4_ADDR(&dhcp_lease.end_ip, 192, 168, 4, 105); //分配的网段ip结束
 	wifi_softap_set_dhcps_lease(&dhcp_lease);
-	wifi_softap_dhcps_start(); // 使能 soft-AP DHCP 服务
+	wifi_softap_dhcps_start(); 
 }
 void ICACHE_FLASH_ATTR
 user_init(void)
