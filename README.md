@@ -1,20 +1,20 @@
 # makingfunxyz-esp8266
 个人主页：[www.makingfun.xyz](www.makingfun.xyz)
 
-## makingfunxyz-esp8266-NONOS example
+## makingfunxyz-esp8266-NONOS example base on [NonOS SDK V3.0](https://github.com/espressif/ESP8266_NONOS_SDK/tree/release/v3.0.0)
 
 - [x] [ESP8266-nonOS-SNTP](https://github.com/imliubo/makingfunxyz-esp8266/tree/master/makingfunxyz-esp8266-NONOS/1.SNTP)
 - [x] [ESP8266-nonOS-WS2812B](https://github.com/imliubo/makingfunxyz-esp8266/tree/master/makingfunxyz-esp8266-NONOS/2.WS2812B)
 - [x] [ESP8266-nonOS-PWM-LED](https://github.com/imliubo/makingfunxyz-esp8266/tree/master/makingfunxyz-esp8266-NONOS/3.BreathingLightPWM)
 - [x] [ESP8266-nonOS_Web button control LED](https://github.com/imliubo/makingfunxyz-esp8266/tree/master/makingfunxyz-esp8266-NONOS/4.WebControlLED)
 
-## makingfunxyz-esp8266-RTOS example
+## makingfunxyz-esp8266-RTOS example base on [RTOS SDK V3.0](https://github.com/espressif/ESP8266_RTOS_SDK/tree/release/v3.0)
 
 - [x] [ESP8266-RTOS-hello world](https://github.com/imliubo/makingfunxyz-esp8266/tree/master/makingfunxyz-esp8266-RTOS/1.hello_world)
 
-好久没有关注ESP8266，最近看到ESP8266的SDK进行了一次大升级，正在逐步往ESP32的风格靠近，最重要的是ESP-IDF也将会支持ESP8266的开发，可以预见的是将来ESP8266和ESP32的开发将会更加便利。
+好久没有关注ESP8266，最近看到ESP8266 RTOS SDK进行了一次大升级，正在逐步往ESP32的风格靠近，最重要的是ESP-IDF也将会支持ESP8266的开发，可以预见的是将来ESP8266和ESP32的开发将会更加便利。
 
-## ESP8266 SDK v3.0 更新说明
+## ESP8266 RTOS SDK V3.0 更新说明
 * BootLoader 兼容 ESP-IDF
 * 大部分 API 接口兼容 ESP-IDF
 * 重构 Wi-Fi 底层架构，增强稳定性
@@ -31,6 +31,7 @@
 ## 环境搭建失败，具体原因不详
 
 没想到，简简单单的一个环境搭建就失败了，真是让人感觉到羞愧，最可怕的是连失败的原因都不晓得，好在有人遇到了跟我类似的问题，不是我自己一个人的问题，具体原因还在等官方回复，等待~
+
 原因已找到,万万让人没有想到的是，竟然是解压工具的锅，估计是不同平台下的压缩工具算法不同，导致解压出来的文件少了很多。解决办法查看[这里](https://github.com/espressif/ESP8266_RTOS_SDK/issues/317)。
 
 原文链接：[乐鑫 物联网操作系统 即将同时支持 ESP8266 和 ESP32](https://mp.weixin.qq.com/s/x8fIFkns7DDFmqX1Wjn5mQ)
