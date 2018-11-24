@@ -36,7 +36,6 @@ SOFTWARE.
 
 int led_flag = 0;
 int index_size = 1033;
-int POST_flag = 0;
 /******************************************************************************
  * FunctionName : parse_url
  * Description  : parse the received data from the server
@@ -274,13 +273,11 @@ webserver_recv(void *arg, char *pusrdata, unsigned short length)
     pURL_Frame = (URL_Frame *)os_zalloc(sizeof(URL_Frame));
     parse_url(pusrdata, pURL_Frame);
 
-    if(POST_flag == 1){//处理POST请求，POST请求头跟body是两次，我们需要处理第二次的body部分
-    	POST_flag = 0;
-        if(strcmp(pusrdata,"ledToggle=1")==0){
-        	GPIO_OUTPUT_SET(GPIO_ID_PIN(12), 1);
-        }else{
-        	GPIO_OUTPUT_SET(GPIO_ID_PIN(12), 0);
-        }
+
+    if(strstr(pusrdata,"ledToggle=1")){//处理消息体中  按键触发后 post请求
+    	GPIO_OUTPUT_SET(GPIO_ID_PIN(12), 1);
+    }else if(strstr(pusrdata,"ledToggle=0")){
+    	GPIO_OUTPUT_SET(GPIO_ID_PIN(12), 0);
     }
 
     switch (pURL_Frame->Type) {
@@ -314,7 +311,6 @@ webserver_recv(void *arg, char *pusrdata, unsigned short length)
         	os_printf("-------------------------------\r\n");
         	os_printf("We have a POST request.\r\n");
         	os_printf("-------------------------------\r\n");
-        	POST_flag = 1;
             pParseBuffer = (char *)os_strstr(pusrdata, "\r\n\r\n");
             if (pParseBuffer == NULL) {
                 data_send(arg, false, NULL);
