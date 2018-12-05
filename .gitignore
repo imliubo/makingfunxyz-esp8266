@@ -45,8 +45,12 @@
 # Kernel Module Compile Results
 #*.mod*
 #*.cmd
+.setting
+.project
+.cproject
 #.tmp_versions/
 #modules.order
 #Module.symvers
 #Mkfile.old
 #dkms.conf
+
