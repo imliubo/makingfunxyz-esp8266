@@ -1,7 +1,7 @@
 from socket import *
 from time import ctime
  
-ADDR = ('192.168.1.184',6666)
+ADDR = ('192.168.0.109',6666)
 tcpServer = socket(AF_INET,SOCK_STREAM)
 
 i = 0
@@ -19,7 +19,7 @@ while True:
             break
         print(recvData)
         i = i + 1
-        client.send(("hi this is server! message num " + str(i)).encode())
+        client.send(("hi this is PC server! message num " + str(i)).encode())
         
     client.close()
     

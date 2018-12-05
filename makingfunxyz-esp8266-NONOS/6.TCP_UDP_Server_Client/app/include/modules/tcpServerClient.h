@@ -36,12 +36,7 @@ void tcp_client_init(uint8 *remote_ip,struct ip_addr *local_ip, int remote_port)
 /**
  * TCP Server functions
  */
-void tcp_server_sent_cb(void *arg);
-void tcp_server_recv_cb(void *arg,char *pdata,unsigned short length);
-void tcp_server_recon_cb(void *arg,sint8 error);
-void tcp_server_discon_cb(void *arg);
-void tcp_server_listen_cb(void *arg);
-void tcp_server_send_data(void *arg,char *pdata,unsigned short length);
-void tcp_server_init(void);
+void tcp_server_send_data(void);
+void tcp_server_init(uint16 local_port);
 
 #endif

@@ -99,14 +99,19 @@ WifiStatus_Check(void){
 		os_timer_disarm(&wifistate_checktimer);
 		struct ip_info local_ip;
 		wifi_get_ip_info(STATION_IF,&local_ip);
-		tcp_client_init(TCP_SERVER_IP,&local_ip.ip,TCP_SERVER_PORT);
+		//tcp_client_init(TCP_SERVER_IP,&local_ip.ip,TCP_SERVER_PORT);//TCP Client初始化
+		tcp_server_init(TCP_LOCAL_PORT);//TCP Server初始化
 	}else{
 		os_printf("WiFi connection failed!\r\n");
 	}
 }
 
+/**
+ * Wi-Fi连接回调函数
+ */
 void ICACHE_FLASH_ATTR
 wifiConnectCb(uint8_t status){
+
 	os_timer_disarm(&wifistate_checktimer);
 	os_timer_setfn(&wifistate_checktimer, (os_timer_func_t *) WifiStatus_Check,NULL);
 	os_timer_arm(&wifistate_checktimer, 2000, true);
@@ -115,9 +120,9 @@ wifiConnectCb(uint8_t status){
 void ICACHE_FLASH_ATTR
 user_init(void)
 {
-    os_printf("\n\nHello World! ZHIHU IAMLIUBO\n\n");
+    os_printf("\nHello World! ZHIHU IAMLIUBO\n\n");
 
     wifi_set_opmode(0x01);
 
-    WIFI_Connect(STA_SSID, STA_PASS, wifiConnectCb);
+    WIFI_Connect(STA_SSID, STA_PASS, wifiConnectCb);//
 }
