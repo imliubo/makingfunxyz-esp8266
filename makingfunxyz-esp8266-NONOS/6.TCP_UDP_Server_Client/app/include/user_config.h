@@ -31,5 +31,7 @@
 #define STA_PASS "zxcvbnmlk"
 #define STA_TYPE AUTH_WPA2_PSK
 
+#define TCP_SERVER_IP    "192.168.1.184"
+#define TCP_SERVER_PORT  6666
 #endif
 

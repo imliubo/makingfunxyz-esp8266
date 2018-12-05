@@ -81,31 +81,35 @@ static const partition_item_t at_partition_table[] = {
 };
 
 
-void ICACHE_FLASH_ATTR user_pre_init(void)
-{
+void ICACHE_FLASH_ATTR
+user_pre_init(void){
     if(!system_partition_table_regist(at_partition_table, sizeof(at_partition_table)/sizeof(at_partition_table[0]),SPI_FLASH_SIZE_MAP)) {
 		os_printf("system_partition_table_regist fail\r\n");
 		while(1);
 	}
 }
 
-os_timer_t checkTimer_wifistate;
-void Check_WifiState(void) {
-	uint8 getState;
-	getState = wifi_station_get_connect_status();
-	if (getState == STATION_GOT_IP) {
+os_timer_t wifistate_checktimer;
+void ICACHE_FLASH_ATTR
+WifiStatus_Check(void){
+	uint8 wifiStatus;
+	wifiStatus = wifi_station_get_connect_status();
+	if (wifiStatus == STATION_GOT_IP) {
 		os_printf("WiFi connection is successful!\r\n");
-
+		os_timer_disarm(&wifistate_checktimer);
+		struct ip_info local_ip;
+		wifi_get_ip_info(STATION_IF,&local_ip);
+		tcp_client_init(TCP_SERVER_IP,&local_ip.ip,TCP_SERVER_PORT);
 	}else{
 		os_printf("WiFi connection failed!\r\n");
 	}
 }
 
-void wifiConnectCb(uint8_t status)
-{
-	os_timer_disarm(&checkTimer_wifistate);
-	os_timer_setfn(&checkTimer_wifistate, (os_timer_func_t *) Check_WifiState,NULL);
-	os_timer_arm(&checkTimer_wifistate, 1000, true);
+void ICACHE_FLASH_ATTR
+wifiConnectCb(uint8_t status){
+	os_timer_disarm(&wifistate_checktimer);
+	os_timer_setfn(&wifistate_checktimer, (os_timer_func_t *) WifiStatus_Check,NULL);
+	os_timer_arm(&wifistate_checktimer, 1000, true);
 }
 
 void ICACHE_FLASH_ATTR

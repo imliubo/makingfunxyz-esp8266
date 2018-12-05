@@ -25,28 +25,23 @@ SOFTWARE.
 #include "osapi.h"
 #include "espconn.h"
 #include "mem.h"
+#include "os_type.h"
 
 /**
  * TCP Client functions
  */
-
-void tcp_client_sent_cb(void *arg);
-void tcp_client_recv_cb(void *arg,char *pdata,unsigned short lenth);
-void tcp_client_recon_cb(void *arg,sint8 error);
-void tcp_client_discon_cb(void *arg);
-void tcp_client_connect_cb(void *arg);
-void tcp_client_send_data(void *arg,char *pdata,unsigned short lenth);
-void tcp_client_init(void);
+void tcp_client_send_data(void *arg,char *pdata,unsigned short length);
+void tcp_client_init(uint8 *remote_ip,struct ip_addr *local_ip, int remote_port);
 
 /**
  * TCP Server functions
  */
 void tcp_server_sent_cb(void *arg);
-void tcp_server_recv_cb(void *arg,char *pdata,unsigned short len);
+void tcp_server_recv_cb(void *arg,char *pdata,unsigned short length);
 void tcp_server_recon_cb(void *arg,sint8 error);
 void tcp_server_discon_cb(void *arg);
 void tcp_server_listen_cb(void *arg);
-void tcp_server_send_data(void *arg,char *pdata,unsigned short lenth);
+void tcp_server_send_data(void *arg,char *pdata,unsigned short length);
 void tcp_server_init(void);
 
 #endif
