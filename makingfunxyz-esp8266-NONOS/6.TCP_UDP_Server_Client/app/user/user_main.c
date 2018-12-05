@@ -99,8 +99,8 @@ WifiStatus_Check(void){
 		os_timer_disarm(&wifistate_checktimer);
 		struct ip_info local_ip;
 		wifi_get_ip_info(STATION_IF,&local_ip);
-		//tcp_client_init(TCP_SERVER_IP,&local_ip.ip,TCP_SERVER_PORT);//TCP Client初始化
-		tcp_server_init(TCP_LOCAL_PORT);//TCP Server初始化
+		tcp_client_init(TCP_SERVER_IP,&local_ip.ip,TCP_SERVER_PORT);//TCP Client初始化，Client与Server只能二选一
+//		tcp_server_init(TCP_LOCAL_PORT);//TCP Server初始化,Client与Server只能二选一
 	}else{
 		os_printf("WiFi connection failed!\r\n");
 	}
