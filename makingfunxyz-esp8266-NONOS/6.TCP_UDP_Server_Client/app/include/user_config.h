@@ -27,8 +27,8 @@
 
 #define USE_OPTIMIZE_PRINTF
 
-#define STA_SSID "CMCC-Master"
-#define STA_PASS "zxcvbnmlk"
+#define STA_SSID "zhongkesiping01"
+#define STA_PASS "sdzksp2017"
 #define STA_TYPE AUTH_WPA2_PSK
 
 #define TCP_SERVER_IP    "192.168.1.184"

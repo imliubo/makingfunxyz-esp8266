@@ -18,7 +18,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include "modules/TCP/tcpServerClient.h"
+#include "modules/tcpServerClient.h"
 
 
 /****************************
@@ -39,6 +39,7 @@ void tcp_client_connect_cb(void *arg);
  **********************************/
 os_timer_t tcp_client_send_data_timer;
 struct espconn tcp_client;
+uint8 i;
 
 /**********************************
  *   TCP CLIENT STATIC FUNCTIONS  *
@@ -51,7 +52,7 @@ tcp_client_sent_cb(void *arg){
 void ICACHE_FLASH_ATTR
 tcp_client_recv_cb(void *arg,char *pdata,unsigned short len){
 	os_printf("tcp client receive tcp server data\r\n");
-	os_printf("length: %d \r\n data: %s\r\n",len,pdata);
+	os_printf("length: %d \r\ndata: %s\r\n",len,pdata);
 
 	//TO DO
 
@@ -62,12 +63,14 @@ tcp_client_recv_cb(void *arg,char *pdata,unsigned short len){
 
 void ICACHE_FLASH_ATTR
 tcp_client_recon_cb(void *arg,sint8 error){
-	os_printf("tcp client connect tcp server error %s\r\n",error);
+	os_printf("tcp client connect tcp server error %d\r\n",error);
+	os_timer_disarm(&tcp_client_send_data_timer);
 }
 
 void ICACHE_FLASH_ATTR
 tcp_client_discon_cb(void *arg){
 	os_printf("tcp client disconnect tcp server successful\r\n");
+	os_timer_disarm(&tcp_client_send_data_timer);
 }
 
 void ICACHE_FLASH_ATTR
@@ -79,16 +82,21 @@ tcp_client_connect_cb(void *arg){
 	espconn_regist_sentcb(pespconn,tcp_client_sent_cb);
 	espconn_regist_disconcb(pespconn,tcp_client_discon_cb);
 
+	os_timer_disarm(&tcp_client_send_data_timer);
+	os_timer_setfn(&tcp_client_send_data_timer, (os_timer_func_t *) tcp_client_send_data,NULL);
+	os_timer_arm(&tcp_client_send_data_timer, 1000, true);
 }
 
 /**********************************
  *   TCP CLIENT GLOBAL FUNCTIONS  *
  **********************************/
 void ICACHE_FLASH_ATTR
-tcp_client_send_data(void *arg,char *pdata,unsigned short length){
+tcp_client_send_data(void){
+	char buf[256],length;
 	os_printf("tcp client send data tcp server\r\n");
-	os_printf("length: %d \r\n data: %s\r\n",length,pdata);
-	espconn_sent((struct espconn *)arg,pdata,length);
+	length = os_sprintf(buf,(char *)"Hi this is client! message num %d",i);
+	i++;
+	espconn_sent(&tcp_client,buf,length);
 }
 
 void ICACHE_FLASH_ATTR
@@ -96,6 +104,7 @@ tcp_client_init(uint8 *remote_ip,struct ip_addr *local_ip, int remote_port){
 
 	uint32 server_ip = ipaddr_addr(remote_ip);
 
+	os_printf("tcp client connect to tcp server\r\n");
 	tcp_client.proto.tcp = (esp_tcp *)os_zalloc(sizeof(esp_tcp));
 	tcp_client.type = ESPCONN_TCP;
 

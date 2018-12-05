@@ -33,7 +33,7 @@
 #include "modules/wifi.h"
 #include "user_config.h"
 #include "espconn.h"
-#include "modules/TCP/tcpServerClient.h"
+#include "modules/tcpServerClient.h"
 
 #if ((SPI_FLASH_SIZE_MAP == 0) || (SPI_FLASH_SIZE_MAP == 1))
 #error "The flash map is not supported"
@@ -109,7 +109,7 @@ void ICACHE_FLASH_ATTR
 wifiConnectCb(uint8_t status){
 	os_timer_disarm(&wifistate_checktimer);
 	os_timer_setfn(&wifistate_checktimer, (os_timer_func_t *) WifiStatus_Check,NULL);
-	os_timer_arm(&wifistate_checktimer, 1000, true);
+	os_timer_arm(&wifistate_checktimer, 2000, true);
 }
 
 void ICACHE_FLASH_ATTR
