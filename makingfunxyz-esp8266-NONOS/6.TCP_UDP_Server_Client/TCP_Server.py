@@ -1,12 +1,14 @@
 from socket import *
 from time import ctime
  
-ADDR = ('localhost',8888)
+ADDR = ('192.168.1.184',6666)
 tcpServer = socket(AF_INET,SOCK_STREAM)
- 
+
+i = 0
+
 tcpServer.bind(ADDR)
 tcpServer.listen(1000)
- 
+
 while True:
     print('waiting for connection ...')
     client, addr = tcpServer.accept()
@@ -16,10 +18,8 @@ while True:
         if not recvData:
             break
         print(recvData)
-        sendData = input('>')
-        if not sendData:
-            break
-        client.send(sendData.encode('utf-8'))
+        i = i + 1
+        client.send(("hi this is server! message num " + str(i)).encode())
         
     client.close()
     
