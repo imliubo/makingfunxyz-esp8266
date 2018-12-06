@@ -27,8 +27,8 @@
 
 #define USE_OPTIMIZE_PRINTF
 
-#define STA_SSID "CMCC-Master"//your wifi SSID
-#define STA_PASS "zxcvbnmlk"//your wifi password
+#define STA_SSID "XXXXXXXXXX"//your wifi SSID
+#define STA_PASS "XXXXXXXXXX"//your wifi password
 #define STA_TYPE AUTH_WPA2_PSK
 
 #define TCP_SERVER_IP    "192.168.0.109"//TCP server IP,it is according your PC IP
