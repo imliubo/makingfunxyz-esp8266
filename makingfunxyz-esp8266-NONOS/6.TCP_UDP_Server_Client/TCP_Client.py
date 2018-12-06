@@ -19,4 +19,3 @@ while True:
     
 tcpClient.close()
 
-#这里使用IDLE打开，修改完IP后，保存，可以直接按F5运行。
