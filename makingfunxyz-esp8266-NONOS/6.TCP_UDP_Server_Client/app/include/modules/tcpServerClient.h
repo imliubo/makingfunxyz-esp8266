@@ -30,13 +30,13 @@ SOFTWARE.
 /**
  * TCP Client functions
  */
-void tcp_client_send_data(void);
-void tcp_client_init(uint8 *remote_ip,struct ip_addr *local_ip, int remote_port);
+sint8 tcp_client_send_data(struct espconn *espconn,uint8 *pdata,uint16 length);
+void tcp_client_init(struct espconn *espconn,uint8 *remote_ip,struct ip_addr *local_ip, int remote_port);
 
 /**
  * TCP Server functions
  */
-void tcp_server_send_data(void);
-void tcp_server_init(uint16 local_port);
+sint8 tcp_server_send_data(struct espconn *espconn,uint8 *pdata,uint16 length);
+void tcp_server_init(struct espconn *espconn,uint16 local_port);
 
 #endif

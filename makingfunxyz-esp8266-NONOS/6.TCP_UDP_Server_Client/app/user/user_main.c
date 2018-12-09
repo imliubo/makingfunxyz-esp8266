@@ -35,6 +35,68 @@
 #include "espconn.h"
 #include "modules/tcpServerClient.h"
 
+struct espconn tcp_client;
+struct espconn tcp_server;
+os_timer_t wifistate_checktimer;
+os_timer_t send_data_timer;
+
+void ICACHE_FLASH_ATTR
+TCP_Send_data(void){
+#ifdef  TCP_CLIENT
+	tcp_client_send_data(&tcp_client,"hi this is ESP8266 client!",strlen("hi this is ESP8266 client!"));
+#else
+	tcp_server_send_data(tcp_server,"hi this is ESP8266 server!",strlen("hi this is ESP8266 server!"));
+#endif
+}
+
+void ICACHE_FLASH_ATTR
+WifiStatus_Check(void){
+	uint8 wifiStatus;
+	wifiStatus = wifi_station_get_connect_status();
+	if (wifiStatus == STATION_GOT_IP) {
+		os_printf("WiFi connection is successful!\r\n");
+		os_timer_disarm(&wifistate_checktimer);
+		struct ip_info local_ip;
+		wifi_get_ip_info(STATION_IF,&local_ip);
+#ifdef  TCP_CLIENT
+		tcp_client_init(&tcp_client,TCP_SERVER_IP,&local_ip.ip,TCP_SERVER_PORT);//TCP Client初始化，Client与Server只能二选一
+		os_timer_disarm(&send_data_timer);
+		os_timer_setfn(&send_data_timer, (os_timer_func_t *) TCP_Send_data,NULL);
+		os_timer_arm(&send_data_timer, 2000, true);
+#else
+		tcp_server_init(tcp_server,TCP_LOCAL_PORT);//TCP Server初始化,Client与Server只能二选一
+		os_timer_disarm(&send_data_timer);
+		os_timer_setfn(&send_data_timer, (os_timer_func_t *) TCP_Send_data,NULL);
+		os_timer_arm(&send_data_timer, 2000, true);
+#endif
+
+	}else{
+		os_printf("WiFi connection failed!\r\n");
+	}
+}
+
+/**
+ * Wi-Fi连接回调函数
+ */
+void ICACHE_FLASH_ATTR
+wifiConnectCb(uint8_t status){
+
+	os_timer_disarm(&wifistate_checktimer);
+	os_timer_setfn(&wifistate_checktimer, (os_timer_func_t *) WifiStatus_Check,NULL);
+	os_timer_arm(&wifistate_checktimer, 2000, true);
+}
+
+void ICACHE_FLASH_ATTR
+user_init(void)
+{
+    os_printf("\nHello World! ZHIHU IAMLIUBO\n\n");
+
+    wifi_set_opmode(0x01);
+
+    WIFI_Connect(STA_SSID, STA_PASS, wifiConnectCb);
+}
+
+
 #if ((SPI_FLASH_SIZE_MAP == 0) || (SPI_FLASH_SIZE_MAP == 1))
 #error "The flash map is not supported"
 #elif (SPI_FLASH_SIZE_MAP == 2)
@@ -87,42 +149,4 @@ user_pre_init(void){
 		os_printf("system_partition_table_regist fail\r\n");
 		while(1);
 	}
-}
-
-os_timer_t wifistate_checktimer;
-void ICACHE_FLASH_ATTR
-WifiStatus_Check(void){
-	uint8 wifiStatus;
-	wifiStatus = wifi_station_get_connect_status();
-	if (wifiStatus == STATION_GOT_IP) {
-		os_printf("WiFi connection is successful!\r\n");
-		os_timer_disarm(&wifistate_checktimer);
-		struct ip_info local_ip;
-		wifi_get_ip_info(STATION_IF,&local_ip);
-		tcp_client_init(TCP_SERVER_IP,&local_ip.ip,TCP_SERVER_PORT);//TCP Client初始化，Client与Server只能二选一
-//		tcp_server_init(TCP_LOCAL_PORT);//TCP Server初始化,Client与Server只能二选一
-	}else{
-		os_printf("WiFi connection failed!\r\n");
-	}
-}
-
-/**
- * Wi-Fi连接回调函数
- */
-void ICACHE_FLASH_ATTR
-wifiConnectCb(uint8_t status){
-
-	os_timer_disarm(&wifistate_checktimer);
-	os_timer_setfn(&wifistate_checktimer, (os_timer_func_t *) WifiStatus_Check,NULL);
-	os_timer_arm(&wifistate_checktimer, 2000, true);
-}
-
-void ICACHE_FLASH_ATTR
-user_init(void)
-{
-    os_printf("\nHello World! ZHIHU IAMLIUBO\n\n");
-
-    wifi_set_opmode(0x01);
-
-    WIFI_Connect(STA_SSID, STA_PASS, wifiConnectCb);//
 }

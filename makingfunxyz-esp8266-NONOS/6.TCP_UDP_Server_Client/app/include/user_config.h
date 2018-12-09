@@ -27,6 +27,8 @@
 
 #define USE_OPTIMIZE_PRINTF
 
+#define TCP_CLIENT 1
+
 #define STA_SSID "XXXXXXXXXX"//your wifi SSID
 #define STA_PASS "XXXXXXXXXX"//your wifi password
 #define STA_TYPE AUTH_WPA2_PSK
