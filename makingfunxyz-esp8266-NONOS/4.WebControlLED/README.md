@@ -29,7 +29,7 @@ SPI_SIZE_MAP?=6
 * eagle.irom0text.bin---->0x10000
 * blank.bin --> 0x3FE000
 * esp_init_data_default_v08.bin --> 0x3FC000
-* makingfunxyz.html --> 0x1F4000
+* makingfunxyz.html --> 0x1FC000
 
 ## Options:
 * CrystalFreq:26M
