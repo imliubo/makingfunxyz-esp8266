@@ -120,7 +120,7 @@ key_read_value(void){
 void ICACHE_FLASH_ATTR
 user_init(void)
 {
-    os_printf("\nGPIO EXAMPLE! ZHIHU IAMLIUBO\n\n");
+    os_printf("\nAP Smartconfig Airkiss EXAMPLE! ZHIHU IAMLIUBO\n\n");
 
     wifi_set_opmode(STATION_MODE);
 	wifi_station_set_auto_connect(TRUE);
