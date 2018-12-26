@@ -10,11 +10,6 @@ tcpClient = socket(AF_INET,SOCK_STREAM)
 tcpClient.connect(TCP_SERVER_ADDR)
  
 while i:
-    # recvData = tcpClient.recv(1024).decode('utf-8')
-    # if not recvData:
-    #     break
-    # print(recvData)
-    # i = i + 1
     i = i - 1
     tcpClient.send(("{\"SSID\":\"CMCC-Master\",\"PWD\":\"zxcvbnmlk\",\"Author\":\"IAMLIUBO\",\"zhuanlan\":\"zhuanlan.zhihu.com/imliubo-magic-IoT-Tutorial\"}").encode())
     
