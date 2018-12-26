@@ -40,9 +40,9 @@ SOFTWARE.
 /*********************
  *      DEFINES
  *********************/
-#define INDEX_SIZE 		4410
-#define WEBCONFIG_SIZE 	4526
-#define WIFIDONE_SIZE	4266
+#define INDEX_SIZE 		1437
+#define WEBCONFIG_SIZE 	1541
+#define WIFIDONE_SIZE	1293
 
 /**********************
  *      TYPEDEFS
