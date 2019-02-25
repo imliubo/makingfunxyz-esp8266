@@ -1,16 +1,50 @@
-# ESP8266_NONOS_SDK
+# AP SmartConfig AirKiss example
 
-All documentations @ http://espressif.com/en/support/download/documents?keys=&field_type_tid%5B%5D=14
+## Tutorial
 
+[[网络篇]ESP8266-NonOS学习笔记(五)之SmartConfig、Airkiss等多种配网](https://zhuanlan.zhihu.com/p/51944852)
 
-## Notes ##
-Please add `user_pre_init()` in your project, which will be called before `user_init()`. And you MUST call `system_partition_table_regist()` in `user_pre_init` to register your project partition table.  
+## Hardware:
+* NODEMCU
 
-The following partition address CAN NOT be modified, and you MUST give the correct address. They are retated to the flash map, please refer to [ESP8266 SDK Getting Started Guide](https://www.espressif.com/sites/default/files/documentation/2a-esp8266-sdk_getting_started_guide_en.pdf) or [ESP8266 SDK 入门指南](https://www.espressif.com/sites/default/files/documentation/2a-esp8266-sdk_getting_started_guide_cn.pdf).  
-  
-- SYSTEM\_PARTITION\_BOOTLOADER  
-- SYSTEM\_PARTITION\_OTA_1  
-- SYSTEM\_PARTITION\_OTA_2  
-- SYSTEM\_PARTITION\_SYSTEM_PARAMETER  
+## Tool:
+* [ESPFlashDownload](https://www.espressif.com/sites/default/files/tools/flash_download_tools_v3.6.4.rar)
 
-If you donot use Non-FOTA bin, eagle.irom0.text.bin and irom0.text MUST be downloaded the fixed address, which also can be found in [ESP8266 SDK Getting Started Guide](https://www.espressif.com/sites/default/files/documentation/2a-esp8266-sdk_getting_started_guide_en.pdf) or [ESP8266 SDK 入门指南](https://www.espressif.com/sites/default/files/documentation/2a-esp8266-sdk_getting_started_guide_cn.pdf), and you can define their partition type after `SYSTEM_PARTITION_CUSTOMER_BEGIN`.
+## Download:
+
+### SUPPORT OTA:
+
+**This demo do not support OTA!**
+
+### NOT SUPPORT OTA:
+
+change some code like below
+```makefile
+#Makefile of project line25-line29
+BOOT?=none
+APP?=0
+SPI_SPEED?=40
+SPI_MODE?=DIO
+SPI_SIZE_MAP?=6
+```
+
+* eagle.flash.bin-------->0x00000
+* eagle.irom0text.bin---->0x10000
+* blank.bin --> 0x3FE000
+* esp_init_data_default_v08.bin --> 0x3FC000
+* makingfunxyz.html --> 0x1F4000
+
+## Options:
+* CrystalFreq:26M
+* SPI SPEED: 40MHz
+* SPI MODE: DIO
+* FLASH SIZE: 32Mbit-C1
+* BAUD: 115200
+
+## Hardware connection:
+None
+
+## Result:
+**演示视频-> [AP SmartConfig AirKiss example](https://www.bilibili.com/video/av37953711/?p=1)**
+**If you have any questions, you can email me or submit an issue.**
+
