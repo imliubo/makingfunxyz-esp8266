@@ -45,5 +45,5 @@ SPI_SIZE_MAP?=6
 None
 
 ## Result:
-![](https://github.com/imliubo/makingfunxyz-esp8266/blob/master/makingfunxyz-esp8266-NONOS/5.HelloWorld/img.jpg)
+![](https://github.com/imliubo/makingfunxyz-esp8266/blob/master/makingfunxyz-esp8266-NONOS/05.HelloWorld/img.jpg)
 

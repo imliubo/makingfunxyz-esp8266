@@ -52,4 +52,4 @@ SPI_SIZE_MAP?=6
 * BAUD: 115200
 
 ## Result:
-![](https://github.com/imliubo/makingfunxyz-esp8266/blob/master/makingfunxyz-esp8266-NONOS/1.SNTP/sntp.png)
+![](https://github.com/imliubo/makingfunxyz-esp8266/blob/master/makingfunxyz-esp8266-NONOS/01.SNTP/sntp.png)
