@@ -322,7 +322,7 @@ webserver_recv(void *arg, char *pusrdata, unsigned short length)
                 	os_printf("os_zalloc error!\r\n");
                     goto _temp_exit;
                 }
-                ret = spi_flash_read(500*4096, (uint32 *)index, index_size);  // start address:0x10000 + 0xC0000
+                ret = spi_flash_read(508*4096, (uint32 *)index, index_size);  // start address:0x10000 + 0xC0000
                 if(ret != SPI_FLASH_RESULT_OK){
                 	os_printf("spi_flash_read err:%d\r\n", ret);
                     os_free(index);
