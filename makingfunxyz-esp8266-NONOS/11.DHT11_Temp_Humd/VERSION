@@ -1,0 +1,22 @@
+gwen:
+    at          :   982369a
+    crypto      :   25f7d60
+    espnow      :   20853ed
+    json        :   25f7d60
+    main        :   f18b6d4
+    net80211    :   f18b6d4
+    pp          :   43ffa0c
+    smartconfig :   25f7d60
+    ssl         :   25f7d60
+    upgrade     :   551aeee
+    wpa         :   d0296fd
+    wpa2        :   25f7d60
+    wps         :   25f7d60
+
+phy:
+    phy         :   1136
+
+gitlab:
+    driver      :   c37b846e
+    lwip        :   a7c9c12d
+    mbedtls     :   c37b846e
