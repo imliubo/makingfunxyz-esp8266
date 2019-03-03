@@ -20,6 +20,7 @@
 - [x] [08.AP_SmartConfig_Airkiss](https://github.com/imliubo/makingfunxyz-esp8266/tree/master/makingfunxyz-esp8266-NONOS/08.AP_SmartConfig_Airkiss)
 - [x] [09.Web_Config_Wi-Fi_SSID_PWD](https://github.com/imliubo/makingfunxyz-esp8266/tree/master/makingfunxyz-esp8266-NONOS/09.Web_Config_Wi-Fi_SSID_PWD)
 - [x] [10.MQTT_Control_LED](https://github.com/imliubo/makingfunxyz-esp8266/tree/master/makingfunxyz-esp8266-NONOS/10.MQTT_Control_LED)
+- [x] [11.DHT11_Temp_Humd](https://github.com/imliubo/makingfunxyz-esp8266/tree/master/makingfunxyz-esp8266-NONOS/11.DHT11_Temp_Humd)
 
 ### ESP8266-RTOS example base on [RTOS SDK V3.0](https://github.com/espressif/ESP8266_RTOS_SDK/tree/release/v3.0)
 

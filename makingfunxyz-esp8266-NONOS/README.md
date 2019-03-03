@@ -12,6 +12,7 @@
 - [x] [08.AP_SmartConfig_Airkiss](https://github.com/imliubo/makingfunxyz-esp8266/tree/master/makingfunxyz-esp8266-NONOS/08.AP_SmartConfig_Airkiss)
 - [x] [09.Web_Config_Wi-Fi_SSID_PWD](https://github.com/imliubo/makingfunxyz-esp8266/tree/master/makingfunxyz-esp8266-NONOS/09.Web_Config_Wi-Fi_SSID_PWD)
 - [x] [10.MQTT_Control_LED](https://github.com/imliubo/makingfunxyz-esp8266/tree/master/makingfunxyz-esp8266-NONOS/10.MQTT_Control_LED)
+- [x] [11.DHT11_Temp_Humd](https://github.com/imliubo/makingfunxyz-esp8266/tree/master/makingfunxyz-esp8266-NONOS/11.DHT11_Temp_Humd)
 
 **If you have any questions, you can email me or submit an issue.**
 
