@@ -77,11 +77,11 @@ PIN_FUNC_SELECT(PERIPHS_IO_MUX_GPIO5_U, FUNC_GPIO5);
 
 串口：
 
-![串口打印](https://github.com/imliubo/makingfunxyz-esp8266/tree/master/makingfunxyz-esp8266-NONOS/12.MQTT_DHT11_Temp_Humd/terminal.png)
+![串口打印](https://makingfun.oss-cn-qingdao.aliyuncs.com/zhihu-IAMLIUBO/terminal.png)
 
 手机MQTT助手：
 
-![手机MQTT助手：](https://github.com/imliubo/makingfunxyz-esp8266/tree/master/makingfunxyz-esp8266-NONOS/12.MQTT_DHT11_Temp_Humd/mqtt_assistant.png)
+![手机MQTT助手：](https://makingfun.oss-cn-qingdao.aliyuncs.com/zhihu-IAMLIUBO/mqtt_assistant.png)
 
 **If you have any questions, you can email me or submit an issue.**
 

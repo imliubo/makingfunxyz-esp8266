@@ -74,7 +74,7 @@ app/include/driver/i2c_master.h 28L-33L:
 
 ## Result:
 
-![OLED]()
+![SSD1306_DHT11](https://makingfun.oss-cn-qingdao.aliyuncs.com/zhihu-IAMLIUBO/SSD1306_DHT11.jpg)
 
 **If you have any questions, you can email me or submit an issue.**
 
