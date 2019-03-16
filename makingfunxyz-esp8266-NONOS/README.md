@@ -14,7 +14,8 @@
 - [x] [10.MQTT_Control_LED](https://github.com/imliubo/makingfunxyz-esp8266/tree/master/makingfunxyz-esp8266-NONOS/10.MQTT_Control_LED)
 - [x] [11.DHT11_Temp_Humd](https://github.com/imliubo/makingfunxyz-esp8266/tree/master/makingfunxyz-esp8266-NONOS/11.DHT11_Temp_Humd)
 - [x] [12.MQTT_DHT11_Temp_Humd](https://github.com/imliubo/makingfunxyz-esp8266/tree/master/makingfunxyz-esp8266-NONOS/12.MQTT_DHT11_Temp_Humd)
-- [x] [13.DHT11_Temp_Humd](https://github.com/imliubo/makingfunxyz-esp8266/tree/master/makingfunxyz-esp8266-NONOS/13.SSD1306_DHT11_Temp_Humd)
+- [x] [13.SSD13606_DHT11_Temp_Humd](https://github.com/imliubo/makingfunxyz-esp8266/tree/master/makingfunxyz-esp8266-NONOS/13.SSD1306_DHT11_Temp_Humd)
+
 **If you have any questions, you can email me or submit an issue.**
 
 
