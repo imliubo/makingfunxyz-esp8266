@@ -29,7 +29,15 @@ SPI_SIZE_MAP?=6
 * eagle.irom0text.bin---->0x10000
 * blank.bin --> 0x3FE000
 * esp_init_data_default_v08.bin --> 0x3FC000
+
 * makingfunxyz.html --> 0x1FC000
+
+0x1FC000(hex) => 2080768
+508 = 2080768/4096
+
+```C
+ret = spi_flash_read(508*4096, (uint32 *)html, INDEX_SIZE);
+```
 
 ## Options:
 * CrystalFreq:26M
