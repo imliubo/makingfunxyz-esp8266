@@ -16,8 +16,6 @@ about: Create a report to help me improve
 
 **Expected behavior**
 
-
 **Screenshots**
-
 
 **Additional context**

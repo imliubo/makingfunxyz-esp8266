@@ -1,13 +1,11 @@
 ---
-name: Feature request
-about: Suggest an idea for this project
+name: Problem request
+about: Some problem with this project
 
 ---
 
-**Is your feature request related to a problem? Please describe.**
-
-
-**Describe the solution you'd like**
+**Describe the problem you are experiencing**
 
 
 **Additional context**
+
