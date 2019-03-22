@@ -6,6 +6,8 @@
 
 相关视频在B站连载中，大家可以在B站看到相关例程的演示视频。 [B站传送门](https://www.bilibili.com/video/av37953711/)
 
+QQ交流群[592587184](https://jq.qq.com/?_wv=1027&k=5kJWmKu)，个人精力有关，群内一般不答疑，有问题主要以issue为主。
+
 ## 例程
 
 ### ESP8266-NONOS example base on [NonOS SDK V3.0](https://github.com/espressif/ESP8266_NONOS_SDK/tree/release/v3.0.0)
