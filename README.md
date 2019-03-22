@@ -91,6 +91,6 @@ QQ交流群[592587184](https://jq.qq.com/?_wv=1027&k=5kJWmKu)，个人精力有�
 原文链接：[乐鑫 物联网操作系统 即将同时支持 ESP8266 和 ESP32](https://mp.weixin.qq.com/s/x8fIFkns7DDFmqX1Wjn5mQ)
 
 
-个人主页：[唯有爱与科技不可辜负](www.makingfun.xyz)  
+个人主页：[唯有爱与科技不可辜负](https://www.makingfun.xyz)  
 停更很久了，后期会在主页分享一些开源项目。
 
