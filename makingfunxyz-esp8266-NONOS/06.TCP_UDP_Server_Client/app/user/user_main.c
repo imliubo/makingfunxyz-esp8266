@@ -35,14 +35,17 @@
 #include "espconn.h"
 #include "modules/tcpServerClient.h"
 
+#if  TCP_CLIENT
 struct espconn tcp_client;
-struct espconn tcp_server;
+#else
+struct espconn *tcp_server;
+#endif
 os_timer_t wifistate_checktimer;
 os_timer_t send_data_timer;
 
 void ICACHE_FLASH_ATTR
 TCP_Send_data(void){
-#ifdef  TCP_CLIENT
+#if  TCP_CLIENT
 	tcp_client_send_data(&tcp_client,"hi this is ESP8266 client!",strlen("hi this is ESP8266 client!"));
 #else
 	tcp_server_send_data(tcp_server,"hi this is ESP8266 server!",strlen("hi this is ESP8266 server!"));
@@ -58,7 +61,7 @@ WifiStatus_Check(void){
 		os_timer_disarm(&wifistate_checktimer);
 		struct ip_info local_ip;
 		wifi_get_ip_info(STATION_IF,&local_ip);
-#ifdef  TCP_CLIENT
+#if  TCP_CLIENT
 		tcp_client_init(&tcp_client,TCP_SERVER_IP,&local_ip.ip,TCP_SERVER_PORT);//TCP Client初始化，Client与Server只能二选一
 		os_timer_disarm(&send_data_timer);
 		os_timer_setfn(&send_data_timer, (os_timer_func_t *) TCP_Send_data,NULL);
