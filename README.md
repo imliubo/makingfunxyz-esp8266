@@ -25,6 +25,7 @@ QQ交流群[592587184](https://jq.qq.com/?_wv=1027&k=5kJWmKu)，个人精力有�
 - [x] [11.DHT11_Temp_Humd](https://github.com/imliubo/makingfunxyz-esp8266/tree/master/makingfunxyz-esp8266-NONOS/11.DHT11_Temp_Humd)
 - [x] [12.MQTT_DHT11_Temp_Humd](https://github.com/imliubo/makingfunxyz-esp8266/tree/master/makingfunxyz-esp8266-NONOS/12.MQTT_DHT11_Temp_Humd)
 - [x] [13.SSD13606_DHT11_Temp_Humd](https://github.com/imliubo/makingfunxyz-esp8266/tree/master/makingfunxyz-esp8266-NONOS/13.SSD1306_DHT11_Temp_Humd)
+- [x] [14.Wechat_MQTT_BaiduIoT](https://github.com/imliubo/makingfunxyz-esp8266/tree/master/makingfunxyz-esp8266-NONOS/14.Wechat_MQTT_BaiduIoT)
 
 
 ### ESP8266-RTOS example base on [RTOS SDK V3.0](https://github.com/espressif/ESP8266_RTOS_SDK/tree/release/v3.0)

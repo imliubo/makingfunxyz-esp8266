@@ -117,8 +117,8 @@ void ICACHE_FLASH_ATTR DHT11_Read_publish(void)
     os_printf("%s\n",temp_humd_data);
     os_sprintf(humd_char,"%d",humd);
     os_sprintf(temp_char,"%d",temp);
-    MQTT_Publish(&mqttClient,"/esp8266_test/humd",humd_char,strlen(humd_char),1,0);
-    MQTT_Publish(&mqttClient,"/esp8266_test/temp",temp_char,strlen(temp_char),1,0);
+    MQTT_Publish(&mqttClient,"//zhihu_esp8266/humd",humd_char,strlen(humd_char),1,0);
+    MQTT_Publish(&mqttClient,"/zhihu_esp8266/temp",temp_char,strlen(temp_char),1,0);
     os_timer_arm(&DHT11_Read_timer, 5000, true);//使能定时器
 }
 
@@ -156,7 +156,7 @@ void mqttConnectedCb(uint32_t *args)
     MQTT_Client* client = (MQTT_Client*)args;
     INFO("MQTT: Connected\r\n");
 
-    MQTT_Subscribe(client,"/esp8266_test/LEDcontrol",1);
+    MQTT_Subscribe(client,"/zhihu_esp8266/LEDcontrol",1);
 }
 
 void mqttDisconnectedCb(uint32_t *args)
