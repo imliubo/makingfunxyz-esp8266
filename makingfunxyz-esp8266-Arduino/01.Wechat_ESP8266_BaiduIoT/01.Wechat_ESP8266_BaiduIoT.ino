@@ -33,10 +33,11 @@
    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
    SOFTWARE.
 */
+#include "string.h"
 #include "EspMQTTClient.h"
 #include <DHT.h>
 
-#define DHTPIN 3
+#define DHTPIN 2        //D4
 #define DHTTYPE DHT11   // DHT 11
 
 void onConnectionEstablished();
@@ -57,13 +58,13 @@ void onConnectionEstablished();
 */
 
 EspMQTTClient client(
-  "imliubo",                                // Wifi ssid
-  "IAMLIUBO",                               // Wifi password
+  "imliubo",                        // Wifi ssid
+  "IAMLIUBO",                             // Wifi password
   onConnectionEstablished,                  // MQTT connection established callback
-  "k0en8zk.mqtt.iot.bj.baidubce.com",       // MQTT broker ip
+  "1v1r5ep.mqtt.iot.bj.baidubce.com",       // MQTT broker ip
   1883,                                     // MQTT broker port
-  "k0en8zk/esp8266_device",                 // MQTT username
-  "WrE5UUE4Cax9c3P2",                       // MQTT password
+  "1v1r5ep/zhihu_iamliubo",                 // MQTT username
+  "tNVKODyI2chbm5yp",                       // MQTT password
   "baiduIoT-esp8266-device1",               // Client name
   false,
   false
@@ -71,23 +72,32 @@ EspMQTTClient client(
 DHT dht(DHTPIN, DHTTYPE);
 
 long lastMsg = 0;
-char msg[20];
+char msg[23];
+
 
 void setup()
 {
   Serial.begin(115200);
-
+  pinMode(LED_BUILTIN, OUTPUT);
   dht.begin();
+  digitalWrite(LED_BUILTIN, HIGH);
 }
 
 void LED_Control_Callback(const String & payload) {
+  const char* p = payload.c_str();
   Serial.println("LED callback");
-  Serial.println(payload);
+  Serial.println(p);
+  if(strstr(p,"On")){
+    digitalWrite(LED_BUILTIN, LOW);   // turn the LED on 
+  }
+  if(strstr(p,"Off")){
+    digitalWrite(LED_BUILTIN, HIGH);   // turn the LED off
+  }
 }
 void Temp_Humd_Report() {
   float humd = dht.readHumidity();
   float temp = dht.readTemperature();
-  snprintf (msg, 20, "Temp:%d  Humd:%d",temp,humd);
+  sprintf (msg,"Temp:%.2f'C  Humd:%.0f% ",temp,humd);
   
   Serial.println("======Temp Humd Report======");
   Serial.println(msg);
