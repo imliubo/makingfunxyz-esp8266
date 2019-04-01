@@ -32,7 +32,6 @@ SPI_SIZE_MAP?=6
 * eagle.irom0text.bin---->0x10000
 * blank.bin --> 0x3FE000
 * esp_init_data_default_v08.bin --> 0x3FC000
-* makingfunxyz.html --> 0x1F4000
 
 ## Options:
 * CrystalFreq:26M
@@ -45,6 +44,7 @@ SPI_SIZE_MAP?=6
 None
 
 ## Result:
+
 **请查看上面教程中给出的连接，里面有演示视频**
 
 **If you have any questions, you can email me or submit an issue.**
