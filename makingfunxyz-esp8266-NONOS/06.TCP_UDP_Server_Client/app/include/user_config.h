@@ -27,14 +27,22 @@
 
 #define USE_OPTIMIZE_PRINTF
 
-#define TCP_CLIENT 1
+#define TCP_CLIENT 0
+#define TCP_SERVER 0
 
-#define STA_SSID "XXXXXXXXXX"//your wifi SSID
-#define STA_PASS "XXXXXXXXXX"//your wifi password
+#define UDP_TEST   1
+
+#define STA_SSID "CMCC-7uHL"//your wifi SSID
+#define STA_PASS "zxcvbnmlk"//your wifi password
 #define STA_TYPE AUTH_WPA2_PSK
 
-#define TCP_SERVER_IP    "192.168.0.109"//TCP server IP,it is according your PC IP
+#define TCP_SERVER_IP    "192.168.1.10"//TCP server IP,it is according your PC IP
 #define TCP_SERVER_PORT  6666
-#define TCP_LOCAL_PORT	 6666
+#define TCP_LOCAL_PORT	 8888
+
+#define UDP_REMOTE_IP    "192.168.1.10"//UDP server IP,it is according your PC IP
+#define UDP_REMOTE_PORT  6666
+#define UDP_LOCAL_PORT	 8888
+
 #endif
 

@@ -18,4 +18,16 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include "modules/udpServerClient.h"
+#ifndef UDPSERVERCLIENT_H_
+#define UDPSERVERCLIENT_H_
+
+#include "driver/uart.h"
+#include "osapi.h"
+#include "espconn.h"
+#include "mem.h"
+#include "user_interface.h"
+
+sint8 udp_send_data(struct espconn *espconn,uint8 *pdata,uint16 length);
+void  udp_init(struct espconn *espconn,uint8 *remote_ip,struct ip_addr *local_ip,int remote_port);
+
+#endif

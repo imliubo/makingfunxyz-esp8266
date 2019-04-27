@@ -127,7 +127,7 @@ tcp_client_init(struct espconn *espconn,uint8 *remote_ip,struct ip_addr *local_i
 	os_memcpy(espconn->proto.tcp->remote_ip,&server_ip,4);//设置要连接的Server IP地址
 	espconn->proto.tcp->remote_port = remote_port;//设置要连接的Server 端口号
 	os_memcpy(espconn->proto.tcp->local_ip,local_ip,4);//设置本地IP地址
-	espconn->proto.tcp->local_port = espconn_port();//设置本地端口号
+	espconn->proto.tcp->local_port = TCP_LOCAL_PORT;//设置本地端口号
 
 	espconn_regist_connectcb(espconn,tcp_client_connect_cb);//注册连接成功回调函数
 	espconn_regist_reconcb(espconn,tcp_client_recon_cb);//注册断连重新连接回调函数

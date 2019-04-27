@@ -34,23 +34,43 @@
 #include "user_config.h"
 #include "espconn.h"
 #include "modules/tcpServerClient.h"
+#include "modules/udp.h"
 
-#if  TCP_CLIENT
+#if   TCP_CLIENT
 struct espconn tcp_client;
-#else
+#elif TCP_SERVER
 struct espconn *tcp_server;
+#elif UDP_TEST
+struct espconn udp_test;
 #endif
+
+uint8  messages_send_buffer[50];
+uint16 messages_send_count = 0;
+
 os_timer_t wifistate_checktimer;
 os_timer_t send_data_timer;
 
 void ICACHE_FLASH_ATTR
 TCP_Send_data(void){
-#if  TCP_CLIENT
-	tcp_client_send_data(&tcp_client,"hi this is ESP8266 client!",strlen("hi this is ESP8266 client!"));
-#else
-	tcp_server_send_data(tcp_server,"hi this is ESP8266 server!",strlen("hi this is ESP8266 server!"));
+	
+#if   TCP_CLIENT
+	os_sprintf(messages_send_buffer,"hi this is ESP8266 TCP client![%d]\r\n",messages_send_count);
+	tcp_client_send_data(&tcp_client,messages_send_buffer,strlen(messages_send_buffer));
+#elif TCP_SERVER
+	os_sprintf(messages_send_buffer,"hi this is ESP8266 TCP server![%d]\r\n",messages_send_count);
+	tcp_server_send_data(tcp_server,messages_send_buffer,strlen(messages_send_buffer));
 #endif
+	messages_send_count++;
 }
+
+#if UDP_TEST
+void ICACHE_FLASH_ATTR
+UDP_Send_Messages(void){
+	os_sprintf(messages_send_buffer,"hi this is ESP8266 UDP send messages test![%d]\r\n",messages_send_count);
+	udp_send_data(&udp_test,messages_send_buffer,strlen(messages_send_buffer));
+	messages_send_count++;
+}
+#endif
 
 void ICACHE_FLASH_ATTR
 WifiStatus_Check(void){
@@ -61,15 +81,20 @@ WifiStatus_Check(void){
 		os_timer_disarm(&wifistate_checktimer);
 		struct ip_info local_ip;
 		wifi_get_ip_info(STATION_IF,&local_ip);
-#if  TCP_CLIENT
-		tcp_client_init(&tcp_client,TCP_SERVER_IP,&local_ip.ip,TCP_SERVER_PORT);//TCP Client初始化，Client与Server只能二选一
+#if   TCP_CLIENT
+		tcp_client_init(&tcp_client,TCP_SERVER_IP,&local_ip.ip,TCP_SERVER_PORT);
 		os_timer_disarm(&send_data_timer);
 		os_timer_setfn(&send_data_timer, (os_timer_func_t *) TCP_Send_data,NULL);
 		os_timer_arm(&send_data_timer, 2000, true);
-#else
-		tcp_server_init(tcp_server,TCP_LOCAL_PORT);//TCP Server初始化,Client与Server只能二选一
+#elif TCP_SERVER
+		tcp_server_init(tcp_server,TCP_LOCAL_PORT);
 		os_timer_disarm(&send_data_timer);
 		os_timer_setfn(&send_data_timer, (os_timer_func_t *) TCP_Send_data,NULL);
+		os_timer_arm(&send_data_timer, 2000, true);
+#elif UDP_TEST
+		udp_init(&udp_test,UDP_REMOTE_IP,&local_ip.ip,UDP_REMOTE_PORT);
+		os_timer_disarm(&send_data_timer);
+		os_timer_setfn(&send_data_timer, (os_timer_func_t *)UDP_Send_Messages,NULL);
 		os_timer_arm(&send_data_timer, 2000, true);
 #endif
 
@@ -92,6 +117,8 @@ wifiConnectCb(uint8_t status){
 void ICACHE_FLASH_ATTR
 user_init(void)
 {
+	uart_init(115200, 115200);
+	
     os_printf("\nHello World! ZHIHU IAMLIUBO\n\n");
 
     wifi_set_opmode(0x01);
