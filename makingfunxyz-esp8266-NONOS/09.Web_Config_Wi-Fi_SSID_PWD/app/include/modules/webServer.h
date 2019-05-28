@@ -79,7 +79,7 @@ typedef struct _rst_parm {
 /**********************
  * GLOBAL PROTOTYPES
  **********************/
-void webserver_init(uint32 port);
+void user_webserver_init(uint32 port);
 
 /**********************
  *      MACROS

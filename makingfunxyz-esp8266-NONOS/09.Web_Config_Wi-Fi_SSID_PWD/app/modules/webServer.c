@@ -37,6 +37,8 @@ SOFTWARE.
 #include "mem.h"
 #include "gpio.h"
 #include "user_interface.h"
+#include <stdlib.h>
+#include <stdio.h>
 /*********************
  *      DEFINES
  *********************/

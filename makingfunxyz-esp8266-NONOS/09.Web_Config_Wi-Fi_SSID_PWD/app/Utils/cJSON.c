@@ -49,6 +49,8 @@
 #include <string.h>
 #include <math.h>
 #include <limits.h>
+#include <ctype.h>
+#include <stdlib.h>
 
 #ifndef ESP8266_PLATFORM
 #include <ctype.h>
