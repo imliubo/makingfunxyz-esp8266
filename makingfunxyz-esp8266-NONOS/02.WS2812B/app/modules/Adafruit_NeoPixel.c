@@ -39,9 +39,13 @@ void  ICACHE_FLASH_ATTR WS2812Send_8bit( uint8_t dat )
 		uint8_t byte = dat;
 		while (mask)
 		{
-			if( byte & mask ) SEND_WS_1(); else SEND_WS_0();
-			mask >>= 1;
+			if( byte & mask ){
+          SEND_WS_1(); 
+        }else {
+          SEND_WS_0();
         }
+			mask >>= 1;
+    }
 
 	ets_intr_unlock();
 }

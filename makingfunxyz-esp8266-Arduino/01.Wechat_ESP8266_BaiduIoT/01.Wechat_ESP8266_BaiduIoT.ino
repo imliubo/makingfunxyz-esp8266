@@ -58,13 +58,13 @@ void onConnectionEstablished();
 */
 
 EspMQTTClient client(
-  "imliubo",                        // Wifi ssid
-  "IAMLIUBO",                             // Wifi password
+  "imliubo",                                // Wifi ssid
+  "IAMLIUBO",                               // Wifi password
   onConnectionEstablished,                  // MQTT connection established callback
   "1v1r5ep.mqtt.iot.bj.baidubce.com",       // MQTT broker ip
   1883,                                     // MQTT broker port
   "1v1r5ep/zhihu_iamliubo",                 // MQTT username
-  "tNVKODyI2chbm5yp",                       // MQTT password
+  "tNVKODyl2chbm5yp",                       // MQTT password
   "baiduIoT-esp8266-device1",               // Client name
   false,
   false
@@ -102,14 +102,14 @@ void Temp_Humd_Report() {
   Serial.println("======Temp Humd Report======");
   Serial.println(msg);
   
-  client.publish("/esp8266_test/humd", String(humd));
-  client.publish("/esp8266_test/temp", String(temp));
+  client.publish("/zhihu_esp8266/humd", String(humd));
+  client.publish("/zhihu_esp8266/temp", String(temp));
 }
 
 void onConnectionEstablished()
 {
   // Subscribe to "mytopic/test" and display received message to Serial
-  client.subscribe("/esp8266_test/LEDcontrol", LED_Control_Callback);
+  client.subscribe("/zhihu_esp8266/LEDcontrol", LED_Control_Callback);
 }
 
 void loop()
